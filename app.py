@@ -17,7 +17,7 @@ def main():
     mode = st.checkbox("Include Timing (for better accuracy)", value=True)
 
     # File upload for image
-    uploaded_image = st.file_uploader("Upload your image here", type=["jpg", "jpeg", "png"])
+    uploaded_image = st.file_uploader("Upload your music sheet here", type=["jpg", "jpeg", "png"])
     if uploaded_image is not None:
         st.success("Music Sheet uploaded successfully.")
 

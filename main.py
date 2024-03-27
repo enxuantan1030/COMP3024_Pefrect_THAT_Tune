@@ -81,21 +81,6 @@ def merge_recs(recs, threshold):
     return filtered_recs
 
 
-def open_file(path):
-    platform = sys.platform
-    if platform.startswith('linux'):
-        cmd = 'xdg-open'
-    elif platform == 'win32':
-        cmd = 'start'
-    elif platform == 'darwin':
-        cmd = 'open'
-    else:
-        print("Unsupported platform")
-        return
-
-    subprocess.run([cmd, path], check=True)
-
-
 if __name__ == "__main__":
 
     # Check if mode argument is provided
@@ -133,7 +118,6 @@ if __name__ == "__main__":
     for r in staff_recs:
         r.draw(staff_recs_img, (0, 0, 255), 2)
     cv2.imwrite('staff_recs_img.png', staff_recs_img)
-    # open_file('staff_recs_img.png')
 
     print("Discovering staff locations...")
     staff_boxes = merge_recs([Rectangle(0, r.y, img_width, r.h) for r in staff_recs], 0.01)
@@ -141,7 +125,6 @@ if __name__ == "__main__":
     for r in staff_boxes:
         r.draw(staff_boxes_img, (0, 0, 255), 2)
     cv2.imwrite('staff_boxes_img.png', staff_boxes_img)
-    # open_file('staff_boxes_img.png')
 
     print("Matching sharp image...")
     sharp_recs = locate_images(img_gray, sharp_imgs, sharp_lower, sharp_upper, sharp_thresh)
@@ -152,7 +135,6 @@ if __name__ == "__main__":
     for r in sharp_recs:
         r.draw(sharp_recs_img, (0, 0, 255), 2)
     cv2.imwrite('sharp_recs_img.png', sharp_recs_img)
-    # open_file('sharp_recs_img.png')
 
     print("Matching flat image...")
     flat_recs = locate_images(img_gray, flat_imgs, flat_lower, flat_upper, flat_thresh)
@@ -163,7 +145,6 @@ if __name__ == "__main__":
     for r in flat_recs:
         r.draw(flat_recs_img, (0, 0, 255), 2)
     cv2.imwrite('flat_recs_img.png', flat_recs_img)
-    # open_file('flat_recs_img.png')
 
     print("Matching quarter image...")
     quarter_recs = locate_images(img_gray, quarter_imgs, quarter_lower, quarter_upper, quarter_thresh)
@@ -174,7 +155,6 @@ if __name__ == "__main__":
     for r in quarter_recs:
         r.draw(quarter_recs_img, (0, 0, 255), 2)
     cv2.imwrite('quarter_recs_img.png', quarter_recs_img)
-    # open_file('quarter_recs_img.png')
 
     print("Matching half image...")
     half_recs = locate_images(img_gray, half_imgs, half_lower, half_upper, half_thresh)
@@ -185,7 +165,6 @@ if __name__ == "__main__":
     for r in half_recs:
         r.draw(half_recs_img, (0, 0, 255), 2)
     cv2.imwrite('half_recs_img.png', half_recs_img)
-    # open_file('half_recs_img.png')
 
     print("Matching whole image...")
     whole_recs = locate_images(img_gray, whole_imgs, whole_lower, whole_upper, whole_thresh)
@@ -196,7 +175,6 @@ if __name__ == "__main__":
     for r in whole_recs:
         r.draw(whole_recs_img, (0, 0, 255), 2)
     cv2.imwrite('whole_recs_img.png', whole_recs_img)
-    # open_file('whole_recs_img.png')
 
     note_groups = []
     for box in staff_boxes:
@@ -241,7 +219,6 @@ if __name__ == "__main__":
         r.draw(img, (0, 0, 255), 2)
 
     cv2.imwrite('res.png', img)
-    open_file('res.png')
 
     for note_group in note_groups:
         print([note.note + " " + note.sym for note in note_group])
@@ -353,7 +330,7 @@ if __name__ == "__main__":
     cv2.imwrite('result.png', result)
 
     # Open the saved image with the rectangle
-    open_file('result.png')
+    # open_file('result.png')
 
     generate_overlay_image(f"cropped_{audio_name}_xGaussian_audio_img_bitwise.jpg",f"cropped_{img_file_name}_sheet_img_bitwise.jpg")
 ######################################compare-midi################################
