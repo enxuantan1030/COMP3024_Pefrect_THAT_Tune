@@ -50,7 +50,7 @@ def main():
                 mode_arg = "1" if mode else "2"
 
                 # Run the command with the uploaded image and audio paths, and mode as arguments
-                process(uploaded_image.name, mode_arg, uploaded_audio.name)
+                cmd = f"python main.py ./temp/{uploaded_image.name} --mode {mode_arg} ./temp/{uploaded_audio.name}"
                 st.info(f"Evaluating your piano performance...It might take a few minutes...")
 
                 # Execute the command and wait for it to finish
