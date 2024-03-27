@@ -95,8 +95,6 @@ def generate_overlay_image(image_A, image_B):
     dst = cv2.addWeighted(img1, 0.5, img2, 0.7, 0)
 
     img_arr = np.hstack((img1, img2))
-    cv2.imshow('Input Images', img_arr)
-    cv2.imshow('Blended Image', dst)
 
     # Save the image with drawn rectangle
     cv2.imwrite('overlay.png', dst)
