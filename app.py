@@ -13,7 +13,7 @@ def main():
                'files into piano roll images, followed by utilizing image processing to improve their quality. It '
                'will then then identifies incorrectly played notes within the recording. ')
     st.caption('Have fun experiment with it! :tada: :tada: ')
-    st.caption(':exclamation: _NOTE: whole music sheet will take longer time to process_')
+    st.caption(':exclamation: _**NOTE: whole music sheet will take longer time to process**_ :exclamation:')
 
 
     st.subheader('Evaluation Preferences:')
