@@ -82,8 +82,18 @@ def merge_recs(recs, threshold):
 
 
 def open_file(path):
-    cmd = {'linux':'eog', 'win32':'explorer', 'darwin':'open'}[sys.platform]
-    subprocess.run([cmd, path])
+    platform = sys.platform
+    if platform.startswith('linux'):
+        cmd = 'xdg-open'
+    elif platform == 'win32':
+        cmd = 'start'
+    elif platform == 'darwin':
+        cmd = 'open'
+    else:
+        print("Unsupported platform")
+        return
+
+    subprocess.run([cmd, path], check=True)
 
 
 if __name__ == "__main__":
