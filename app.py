@@ -49,8 +49,11 @@ def main():
                 # Determine mode based on checkbox state
                 mode_arg = "1" if mode else "2"
 
+                # Specify the Python binary from the virtual environment
+                python_binary = "/home/appuser/venv/bin/python"  # Adjust this path based on your virtual environment
+
                 # Run the command with the uploaded image and audio paths, and mode as arguments
-                cmd = f"python main.py ./temp/{uploaded_image.name} --mode {mode_arg} ./temp/{uploaded_audio.name}"
+                cmd = f"{python_binary} main.py ./temp/{uploaded_image.name} --mode {mode_arg} ./temp/{uploaded_audio.name}"
                 st.info(f"Evaluating your piano performance...It might take a few minutes...")
 
                 # Execute the command and wait for it to finish
