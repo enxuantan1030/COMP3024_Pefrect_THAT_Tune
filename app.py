@@ -11,7 +11,8 @@ def main():
     st.caption('The website provides a simple evaluation on piano performance. Users can upload digital music sheets '
                '**AND** recordings of their piano performances for assessment. The service converts user-uploaded '
                'files into piano roll images, followed by utilizing image processing to improve their quality. It '
-               'then identifies incorrectly played notes within the recording.')
+               'will then then identifies incorrectly played notes within the recording. Have fun testing it! :tada: '
+               ':tada: \n :exclamation: :exclamation: _NOTE: whole music sheet will take longer time to process_')
     st.subheader('Evaluation Preferences:')
     # Checkbox for selecting mode
     mode = st.checkbox("Include Timing (for better accuracy)", value=True)
