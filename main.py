@@ -86,22 +86,14 @@ def open_file(path):
     subprocess.run([cmd, path])
 
 
-if __name__ == "__main__":
-
-    # Check if mode argument is provided
-    if len(sys.argv) > 2 and sys.argv[2] == "--mode":
-        mode = int(sys.argv[3])
-    else:
-        # Default mode to 1 if not provided
-        mode = 1
+def process(sheet_input, mode, audio_input):
 
     # 1. Specify input and output directories
     output_sheet_directory = "output_sheet"
 
 #     img_file = sys.argv[1]
 #     # 2. Specify input image file
-    img_file = sys.argv[1:][0]
-    img = cv2.imread(img_file, 0) # read
+    img = cv2.imread(sheet_input, 0) # read
 #     img_gray = img
 #     img = cv2.cvtColor(img_gray, cv2.COLOR_GRAY2RGB)
 #     ret, img_gray = cv2.threshold(img_gray, 127, 255, cv2.THRESH_BINARY)
@@ -264,8 +256,7 @@ if __name__ == "__main__":
 #     sheet_midi.addNote(track, channel, pitch, time, 4, 0)
 #
 #     # Extract the input image file name (without extension)
-    img_file_path = sys.argv[1]
-    img_file_name = os.path.splitext(os.path.basename(img_file_path))[0]
+    img_file_name = os.path.splitext(os.path.basename(sheet_input))[0]
 #
 #     # Save the sheet MIDI file
 #     sheet_output_path = f"{output_sheet_directory}/{img_file_name}_output_sheet.mid"
@@ -298,14 +289,12 @@ if __name__ == "__main__":
 ##################################midi-to-img#############################################
 ################################################################################################
     # Check if audio file path argument is provided
-    if len(sys.argv) > 4:
-        audio_file_path = sys.argv[4]
-        audio_name = os.path.splitext(os.path.basename(audio_file_path))[0]
-        print(f"name: {audio_name}")
-        audio_input_path = f"temp/{audio_name}.mp3"
-        # Run basic-pitch library for audio
-        audio_output_directory = f"output_audio"
-        subprocess.run(["basic-pitch", audio_output_directory, audio_input_path])
+    audio_name = os.path.splitext(os.path.basename(audio_input))[0]
+    print(f"name: {audio_name}")
+    audio_input_path = f"temp/{audio_name}.mp3"
+    # Run basic-pitch library for audio
+    audio_output_directory = f"output_audio"
+    subprocess.run(["basic-pitch", audio_output_directory, audio_input_path])
 
     # Assuming you have an instance of the MidiFile class
     midi_sheet = MidiFile(f"{output_sheet_directory}/{img_file_name}_output_sheet.mid")

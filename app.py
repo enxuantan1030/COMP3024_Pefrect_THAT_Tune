@@ -3,6 +3,7 @@ import os
 import subprocess
 from PIL import Image
 import time
+from main import *
 
 def main():
 
@@ -13,7 +14,7 @@ def main():
                'then identifies incorrectly played notes within the recording.')
     st.subheader('Evaluation Preferences:')
     # Checkbox for selecting mode
-    mode = st.checkbox("Include Timing (for better accuracy)")
+    mode = st.checkbox("Include Timing (for better accuracy)", value=True)
 
     # File upload for image
     uploaded_image = st.file_uploader("Upload your image here", type=["jpg", "jpeg", "png"])
@@ -49,8 +50,8 @@ def main():
                 mode_arg = "1" if mode else "2"
 
                 # Run the command with the uploaded image and audio paths, and mode as arguments
-                cmd = f"python main.py ./temp/{uploaded_image.name} --mode {mode_arg} ./temp/{uploaded_audio.name}"
-                st.info(f"Evaluating your piano performance....Please wait...")
+                process(uploaded_image.name, mode_arg, uploaded_audio.name)
+                st.info(f"Evaluating your piano performance...It might take a few minutes...")
 
                 # Execute the command and wait for it to finish
                 subprocess.run(cmd, shell=True, check=True)
