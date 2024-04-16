@@ -1,6 +1,10 @@
 import os
 import sys
 import subprocess
+
+import audioread
+import soundfile
+
 from best_fit import fit
 from rectangle import Rectangle
 from note import Note
@@ -39,7 +43,6 @@ sharp_imgs = [cv2.imread(sharp_files, 0) for sharp_files in sharp_files]
 flat_imgs = [cv2.imread(flat_file, 0) for flat_file in flat_files]
 half_imgs = [cv2.imread(half_file, 0) for half_file in half_files]
 whole_imgs = [cv2.imread(whole_file, 0) for whole_file in whole_files]
-
 
 staff_lower, staff_upper, staff_thresh = 50, 150, 0.6
 sharp_lower, sharp_upper, sharp_thresh = 50, 150, 0.70
@@ -82,6 +85,27 @@ def merge_recs(recs, threshold):
 
 
 if __name__ == "__main__":
+    # Convert audio to midi
+    # Check if audio file path argument is provided
+    if len(sys.argv) > 4:
+        audio_file_path = sys.argv[4]
+        audio_name = os.path.splitext(os.path.basename(audio_file_path))[0]
+        # Run basic-pitch library for audio
+        audio_output_directory = f"output_audio"
+        # Get the path to the Python binary in the virtual environment
+        python_binary = sys.executable
+        # Define the command and its arguments
+        cmd = ["basic-pitch", audio_output_directory, audio_file_path]
+        try:
+            # Execute the command and wait for it to finish
+            subprocess.run(cmd, check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Error: {e}")
+            sys.exit(2)  # Exit with status code 2 in case of an error
+        except (soundfile.LibsndfileError, audioread.exceptions.NoBackendError) as e:
+            print(f"Error opening the audio file: {e}")
+            sys.exit(3)
+
 
     # Check if mode argument is provided
     if len(sys.argv) > 2 and sys.argv[2] == "--mode":
@@ -101,6 +125,12 @@ if __name__ == "__main__":
     img = cv2.cvtColor(img_gray, cv2.COLOR_GRAY2RGB)
     ret, img_gray = cv2.threshold(img_gray, 127, 255, cv2.THRESH_BINARY)
     img_width, img_height = img_gray.shape[::-1]
+
+    # Check if the image width matches the specified values
+    if img_width not in [2255, 1465]:
+        staff_thresh = 0.77
+    else:
+        staff_thresh = 0.6
 
     print("Matching staff image...")
     staff_recs = locate_images(img_gray, staff_imgs, staff_lower, staff_upper, staff_thresh)
@@ -248,7 +278,12 @@ if __name__ == "__main__":
             sheet_midi.addNote(track, channel, pitch, time, duration, volume)
             time += duration
 
-    sheet_midi.addNote(track, channel, pitch, time, 4, 0)
+    if note_groups is None or len(note_groups) == 0:
+        print('No music notes detected in this music sheet!')
+        # Optionally, exit with a non-zero exit code
+        sys.exit(1)
+    else:
+        sheet_midi.addNote(track, channel, pitch, time, 4, 0)
 
     # Extract the input image file name (without extension)
     img_file_path = sys.argv[1]
@@ -261,7 +296,7 @@ if __name__ == "__main__":
 
 ##################### write notes into a text file################################
     # Specify the path to save the text file
-    text_file_path = 'whale_corrected_recognized_notes.txt'
+    text_file_path = 'recognized_notes.txt'
 
     # Open the text file in write mode
     with open(text_file_path, 'w') as text_file:
@@ -282,43 +317,29 @@ if __name__ == "__main__":
 
     print(f'Recognized notes saved to {text_file_path}')
 
+
 ##################################midi-to-img#############################################
 ################################################################################################
-    # Check if audio file path argument is provided
-    if len(sys.argv) > 4:
-        audio_file_path = sys.argv[4]
-        audio_name = os.path.splitext(os.path.basename(audio_file_path))[0]
-        print(f"name: {audio_name}")
-        audio_input_path = f"temp/{audio_name}.mp3"
-        # Run basic-pitch library for audio
-        audio_output_directory = f"output_audio"
-        # Get the path to the Python binary in the virtual environment
-        python_binary = sys.executable
-        # Define the command and its arguments
-        cmd = ["basic-pitch", audio_output_directory, audio_input_path]
-        # Execute the command and wait for it to finish
-        subprocess.run(cmd, check=True)
+
 
     # Assuming you have an instance of the MidiFile class
     midi_sheet = MidiFile(f"{output_sheet_directory}/{img_file_name}_output_sheet.mid")
-    roll_sheet = midi_sheet.get_roll()
 
     # Call the draw_roll_and_save method with a filename (optional)
-    midi_sheet.draw_roll_and_save(f'{img_file_name}_img.png')
+    get_size = midi_sheet.draw_roll_and_save(f'{img_file_name}_img.png', None)
 
     # Load audio MIDI file
     midi_audio = MidiFile(f"{audio_output_directory}/{audio_name}_basic_pitch.mid")
 
     # Call the draw_roll_and_save method with a filename
-    midi_audio.draw_roll_and_save(f'{audio_name}_img.png')
-
+    midi_audio.draw_roll_and_save(f'{audio_name}_img.png',get_size)
 
 #####################################image processing##############################
     # Process first image
     red_line_a = process_image(f"{img_file_name}_img.png", f"cropped_{img_file_name}_sheet_img")
 
     # Process second image
-    red_line_b = process_image(f"{audio_name}_img.png", f"cropped_{audio_name}_xGaussian_audio_img")
+    red_line_b = process_image(f"{audio_name}_img.png", f"cropped_{audio_name}_audio_img")
 
 ######################################################################################################
     passed_notes = compare_midi_images(red_line_a, red_line_b, mode)
@@ -329,9 +350,6 @@ if __name__ == "__main__":
     # Save the image with drawn rectangle
     cv2.imwrite('result.png', result)
 
-    # Open the saved image with the rectangle
-    # open_file('result.png')
-
-    generate_overlay_image(f"cropped_{audio_name}_xGaussian_audio_img_bitwise.jpg",f"cropped_{img_file_name}_sheet_img_bitwise.jpg")
+    generate_overlay_image(f"cropped_{audio_name}_audio_img_bitwise.jpg",f"cropped_{img_file_name}_sheet_img_bitwise.jpg")
 ######################################compare-midi################################
 

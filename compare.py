@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 
-def compare_midi_images(imageA_lines, imageB_lines, mode=2):
+def compare_midi_images(imageA_lines, imageB_lines, mode):
     fail_count = 0
     pass_count = 0
     pass_indices = []  # To store the indices of passed lines

@@ -18,19 +18,19 @@ def process_image(input_image_path, output_image_path_prefix):
 
     # Stretch the cropped rectangle
     if cropped_rectangle is not None:
-        img_sheet_cropped_stretched = crop_and_stretch(cropped_rectangle)
-        cv2.imwrite(f"{output_image_path_prefix}_cropped_and_stretched_rectangle.jpg", img_sheet_cropped_stretched)
-
         # Reduce noise
-        reduced_noise_image = reduce_noise(img_sheet_cropped_stretched,output_image_path_prefix)
+        reduced_noise_image = reduce_noise(cropped_rectangle,output_image_path_prefix)
         cv2.imwrite(f"{output_image_path_prefix}_reduced_noise.jpg",reduced_noise_image)
 
+        img_sheet_cropped_stretched = crop_and_stretch(reduced_noise_image)
+        cv2.imwrite(f"{output_image_path_prefix}_cropped_and_stretched_rectangle.jpg", img_sheet_cropped_stretched)
+
         # Pixelate image
-        # pixelated_image = pixelate(reduced_noise_image, 5)
-        # cv2.imwrite(f"{output_image_path_prefix}_pixelated.jpg", pixelated_image)
+        pixelated_image = pixelate(img_sheet_cropped_stretched, 5)
+        cv2.imwrite(f"{output_image_path_prefix}_pixelated.jpg", pixelated_image)
 
         # Detect red lines
-        red_lines = detect_red_lines(reduced_noise_image)
+        red_lines = detect_red_lines(img_sheet_cropped_stretched)
         red_lines = sorted(red_lines, key=lambda x: x[0])  # Sort red lines by start position
 
         # Print the total number of red lines detected
@@ -45,14 +45,14 @@ def process_image(input_image_path, output_image_path_prefix):
         # Put lines on the start and end positions of all red lines
         for line_num, (start_pos1, start_pos2, end_pos1, end_pos2) in enumerate(red_lines):
             # Draw blue line from first start position to second start position
-            cv2.line(reduced_noise_image, (start_pos1[0], start_pos1[1]), (start_pos2[0], start_pos2[1]), (255, 255, 255), 2)  # Blue color
+            cv2.line(img_sheet_cropped_stretched, (start_pos1[0], start_pos1[1]), (start_pos2[0], start_pos2[1]), (255, 255, 255), 2)  # Blue color
 
             # Draw green line from first end position to second end position
-            cv2.line(reduced_noise_image, (end_pos1[0], end_pos1[1]), (end_pos2[0], end_pos2[1]), (0, 255, 0),
+            cv2.line(img_sheet_cropped_stretched, (end_pos1[0], end_pos1[1]), (end_pos2[0], end_pos2[1]), (0, 255, 0),
                      2)  # Green color
 
         # Save the image with colored lines drawn
-        cv2.imwrite(f"{output_image_path_prefix}_noises_and_lines.jpg", reduced_noise_image)
+        cv2.imwrite(f"{output_image_path_prefix}_noises_and_lines.jpg", img_sheet_cropped_stretched)
 
         return red_lines
 
@@ -88,10 +88,6 @@ def reduce_noise(image, filename, morph_kernel_size=5):
 
     # Merge the equalized red channel with the original green and blue channels
     result_equalized = cv2.merge((b, g, equ_r))
-
-    # Sharpen the result using a sharpening filter
-    blurred = cv2.GaussianBlur(result_equalized, (0, 0), 3)
-    sharpened = cv2.addWeighted(result_equalized, 1.5, blurred, -0.5, 0)
 
     return result_equalized
 
@@ -186,6 +182,7 @@ def find_black_rectangles(img):
 
     # Apply adaptive thresholding to obtain a binary image
     binary_img = cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 11, 2)
+    cv2.imwrite(f"binary.jpg", binary_img)
 
     # Find contours in the binary image
     contours, _ = cv2.findContours(binary_img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -193,6 +190,11 @@ def find_black_rectangles(img):
     # Filter contours based on area (adjust the threshold as needed)
     min_contour_area = 100
     black_rectangles = [contour for contour in contours if cv2.contourArea(contour) > min_contour_area]
+
+    # Draw contours on the original image
+    img_with_contours = img.copy()
+    cv2.drawContours(img_with_contours, black_rectangles, -1, (0, 255, 0), 2)  # Green color, thickness 2
+    cv2.imwrite(f"contour.jpg", img_with_contours)
 
     return black_rectangles
 

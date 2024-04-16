@@ -4,22 +4,49 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from matplotlib.colors import colorConverter
 
+
 # inherit the origin mido class
 class MidiFile(mido.MidiFile):
 
-    def draw_roll_and_save(self, filename):
+    def draw_roll_and_save(self, filename, figz):
         roll = self.get_roll()
 
         plt.ioff()
-        fig = plt.figure(figsize=(30, 10))
-        a1 = fig.add_subplot(111)
-        a1.axis("equal")
-        a1.set_facecolor("black")
-
         # Change unit of the time axis from tick to second
         tick = self.get_total_ticks()
         second = mido.tick2second(tick, self.ticks_per_beat, self.get_tempo())
         print(f"sec: {second}")
+        sec = round(second)
+        if figz is None:
+            print(f"sec1: {second}")
+            if sec > 0 and sec <= 15:
+                figz = (60, 10)
+            elif sec >= 16 and sec <= 30:
+                figz = (70, 10)
+            elif sec >= 31 and sec <= 45:
+                figz = (80, 10)
+            elif sec >= 46 and sec <= 60:
+                figz = (90, 10)
+            elif sec >= 61 and sec <= 75:
+                figz = (100, 10)
+            elif sec >= 76 and sec <= 90:
+                figz = (110, 10)
+            elif sec >= 91 and sec <= 105:
+                figz = (120, 10)
+            elif sec >= 106 and sec <= 120:
+                figz = (130, 10)
+            else:
+                # Handle the case where the time limit is exceeded
+                print("Time limit exceeded")
+                figz = (140, 10)
+
+        print("Chosen figz:", figz)
+        # adjust size of figure plotted
+        fig = plt.figure(figsize=figz)
+        a1 = fig.add_subplot(111)
+        a1.axis("equal")
+        a1.set_facecolor("black")
+
         # Define the desired number of intervals to display on the x-axis
         desired_intervals = 20
 
@@ -85,6 +112,9 @@ class MidiFile(mido.MidiFile):
         # Save the piano roll as a .png file
         plt.savefig(filename, format='png')
 
+        # Return the calculated figz
+        return figz
+
     def __init__(self, filename):
 
         mido.MidiFile.__init__(self, filename)
@@ -128,6 +158,8 @@ class MidiFile(mido.MidiFile):
         note_register = [int(-1) for x in range(128)]
         timbre_register = [1 for x in range(16)]
 
+        gap_duration = 3  # Define the duration of the gap between notes (adjust as needed)
+
         for idx, channel in enumerate(events):
             time_counter = 0
             volume = 100
@@ -143,63 +175,31 @@ class MidiFile(mido.MidiFile):
                     timbre_register[idx] = msg.program
 
                 if msg.type == "note_on":
-                    note_on_start_time = time_counter // sr
                     note_on_end_time = (time_counter + msg.time) // sr
                     intensity = volume * msg.velocity // 127
 
+                    # Set a fixed duration for the gap between notes
+                    note_on_end_time += gap_duration  # Add the gap duration to the note_on_end_time
+                    duration = max(1, (msg.time // sr))  # Keep the duration of the note (without subtracting)
+
                     if note_register[msg.note] == -1:
-                        note_register[msg.note] = (note_on_end_time, intensity)
+                        note_register[msg.note] = (note_on_end_time + duration, intensity)
                     else:
                         old_end_time = note_register[msg.note][0]
                         old_intensity = note_register[msg.note][1]
                         roll[idx, msg.note, old_end_time: note_on_end_time] = old_intensity
-                        note_register[msg.note] = (note_on_end_time, intensity)
+                        note_register[msg.note] = (note_on_end_time + duration, intensity)
 
                 if msg.type == "note_off":
-                    note_off_start_time = time_counter // sr
                     note_off_end_time = (time_counter + msg.time) // sr
                     note_on_end_time = note_register[msg.note][0]
                     intensity = note_register[msg.note][1]
                     roll[idx, msg.note, note_on_end_time:note_off_end_time] = intensity
                     note_register[msg.note] = -1
 
-                time_counter += min(msg.time + 10, length - time_counter)
+                time_counter += min(msg.time, length - time_counter)
 
         return roll
-
-    def get_roll_image(self):
-        roll = self.get_roll()
-        plt.ioff()
-
-        K = 16
-
-        transparent = colorConverter.to_rgba('black')
-        colors = [mpl.colors.to_rgba(mpl.colors.hsv_to_rgb((i / K, 1, 1)), alpha=1) for i in range(K)]
-        cmaps = [mpl.colors.LinearSegmentedColormap.from_list('my_cmap', [transparent, colors[i]], 128) for i in
-                 range(K)]
-
-        for i in range(K):
-            cmaps[i]._init()  # create the _lut array, with rgba values
-            # create your alpha array and fill the colormap with them.
-            # here it is progressive, but you can create whathever you want
-            alphas = np.linspace(0, 1, cmaps[i].N + 3)
-            cmaps[i]._lut[:, -1] = alphas
-
-        fig = plt.figure(figsize=(4, 3))
-        a1 = fig.add_subplot(111)
-        a1.axis("equal")
-        a1.set_facecolor("black")
-
-
-        array = []
-
-        for i in range(K):
-            try:
-                img = a1.imshow(roll[i], interpolation='nearest', cmap=cmaps[i], aspect='auto')
-                array.append(img.get_array())
-            except IndexError:
-                pass
-        return array
 
 
     def get_tempo(self):
