@@ -351,5 +351,16 @@ if __name__ == "__main__":
     cv2.imwrite('result.png', result)
 
     generate_overlay_image(f"cropped_{audio_name}_audio_img_bitwise.jpg",f"cropped_{img_file_name}_sheet_img_bitwise.jpg")
+
+    # Delete all files in the output_audio directory
+    output_audio_dir = "output_audio"
+    for filename in os.listdir(output_audio_dir):
+        file_path = os.path.join(output_audio_dir, filename)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+        except Exception as e:
+            print(f"Error deleting {file_path}: {e}")
+
 ######################################compare-midi################################
 
