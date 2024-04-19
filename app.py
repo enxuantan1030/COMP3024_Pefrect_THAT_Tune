@@ -71,21 +71,9 @@ def main():
                 st.info(f"Evaluating your piano performance...It might take a few minutes...")
 
                 # Execute the command and wait for it to finish
-                result = subprocess.run(cmd, check=True)
-
-
-                if result.stdout is not None:
-                    # Extract pass_count and fail_count from the result object
-                    output_lines = result.stdout.splitlines()
-                    pass_count = int(output_lines[0].split(":")[1].strip())
-                    fail_count = int(output_lines[1].split(":")[1].strip())
-                else:
-                    # Handle the case where no output was captured
-                    pass_count = 0
-                    fail_count = 0
+                subprocess.run(cmd, check=True)
 
                 st.success("Evaluation finished!")
-                st.write(f"PASS: {pass_count}, FAIL: {fail_count}")  # Display Pass and Fail counts
                 # Load and display result image
                 result_path = "result.png"
                 result_image = Image.open(result_path)

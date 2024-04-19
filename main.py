@@ -84,7 +84,7 @@ def merge_recs(recs, threshold):
     return filtered_recs
 
 
-def main():
+if __name__ == "__main__":
     # Convert audio to midi
     # Check if audio file path argument is provided
     if len(sys.argv) > 4:
@@ -341,7 +341,7 @@ def main():
     # Process second image
     red_line_b = process_image(f"{audio_name}_img.png", f"cropped_{audio_name}_audio_img")
 
-######################################compare-midi################################
+######################################################################################################
     passed_notes, pass_count, fail_count = compare_midi_images(red_line_a, red_line_b, mode)
 
     # Draw rectangle on the failed notes
@@ -362,10 +362,3 @@ def main():
         except Exception as e:
             print(f"Error deleting {file_path}: {e}")
 
-    print(pass_count, fail_count)
-
-    return pass_count, fail_count
-
-
-if __name__ == "__main__":
-    main()
