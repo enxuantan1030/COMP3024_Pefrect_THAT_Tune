@@ -362,6 +362,8 @@ def main():
         except Exception as e:
             print(f"Error deleting {file_path}: {e}")
 
+    print(pass_count, fail_count)
+
     return pass_count, fail_count
 
 
