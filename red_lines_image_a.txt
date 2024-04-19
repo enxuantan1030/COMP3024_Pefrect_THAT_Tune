@@ -1,168 +1,642 @@
 Red Line 1:
-Start Position 1: (4, 378)
-Start Position 2: (190, 378)
-End Position 1: (4, 372)
-End Position 2: (190, 372)
+Start Position 1: (4, 430)
+Start Position 2: (83, 430)
+End Position 1: (4, 425)
+End Position 2: (83, 425)
 
 Red Line 2:
-Start Position 1: (198, 336)
-Start Position 2: (383, 336)
-End Position 1: (198, 330)
-End Position 2: (383, 330)
+Start Position 1: (89, 440)
+Start Position 2: (126, 440)
+End Position 1: (89, 435)
+End Position 2: (126, 435)
 
 Red Line 3:
-Start Position 1: (391, 336)
-Start Position 2: (480, 336)
-End Position 1: (391, 330)
-End Position 2: (480, 330)
+Start Position 1: (131, 460)
+Start Position 2: (168, 460)
+End Position 1: (131, 455)
+End Position 2: (168, 455)
 
 Red Line 4:
-Start Position 1: (488, 336)
-Start Position 2: (577, 336)
-End Position 1: (488, 330)
-End Position 2: (577, 330)
+Start Position 1: (174, 440)
+Start Position 2: (211, 440)
+End Position 1: (174, 435)
+End Position 2: (211, 435)
 
 Red Line 5:
-Start Position 1: (585, 336)
-Start Position 2: (770, 336)
-End Position 1: (585, 330)
-End Position 2: (770, 330)
+Start Position 1: (216, 430)
+Start Position 2: (253, 430)
+End Position 1: (216, 425)
+End Position 2: (253, 425)
 
 Red Line 6:
-Start Position 1: (778, 342)
-Start Position 2: (964, 342)
-End Position 1: (778, 336)
-End Position 2: (964, 336)
+Start Position 1: (259, 415)
+Start Position 2: (296, 415)
+End Position 1: (259, 410)
+End Position 2: (296, 410)
 
 Red Line 7:
-Start Position 1: (972, 378)
-Start Position 2: (1158, 378)
-End Position 1: (972, 372)
-End Position 2: (1158, 372)
+Start Position 1: (301, 400)
+Start Position 2: (338, 400)
+End Position 1: (301, 395)
+End Position 2: (338, 395)
 
 Red Line 8:
-Start Position 1: (1166, 342)
-Start Position 2: (1254, 342)
-End Position 1: (1166, 336)
-End Position 2: (1254, 336)
+Start Position 1: (344, 385)
+Start Position 2: (423, 385)
+End Position 1: (344, 380)
+End Position 2: (423, 380)
 
 Red Line 9:
-Start Position 1: (1262, 336)
-Start Position 2: (1351, 336)
-End Position 1: (1262, 330)
-End Position 2: (1351, 330)
+Start Position 1: (428, 400)
+Start Position 2: (466, 400)
+End Position 1: (428, 395)
+End Position 2: (466, 395)
 
 Red Line 10:
-Start Position 1: (1359, 336)
-Start Position 2: (1448, 336)
-End Position 1: (1359, 330)
-End Position 2: (1448, 330)
+Start Position 1: (471, 415)
+Start Position 2: (508, 415)
+End Position 1: (471, 410)
+End Position 2: (508, 410)
 
 Red Line 11:
-Start Position 1: (1456, 336)
-Start Position 2: (1545, 336)
-End Position 1: (1456, 330)
-End Position 2: (1545, 330)
+Start Position 1: (513, 400)
+Start Position 2: (551, 400)
+End Position 1: (513, 395)
+End Position 2: (551, 395)
 
 Red Line 12:
-Start Position 1: (1553, 342)
-Start Position 2: (1738, 342)
-End Position 1: (1553, 336)
-End Position 2: (1738, 336)
+Start Position 1: (556, 385)
+Start Position 2: (593, 385)
+End Position 1: (556, 380)
+End Position 2: (593, 380)
 
 Red Line 13:
-Start Position 1: (1746, 360)
-Start Position 2: (1932, 360)
-End Position 1: (1746, 354)
-End Position 2: (1932, 354)
+Start Position 1: (598, 370)
+Start Position 2: (636, 370)
+End Position 1: (598, 365)
+End Position 2: (636, 365)
 
 Red Line 14:
-Start Position 1: (1940, 342)
-Start Position 2: (2126, 342)
-End Position 1: (1940, 336)
-End Position 2: (2126, 336)
+Start Position 1: (641, 415)
+Start Position 2: (678, 415)
+End Position 1: (641, 410)
+End Position 2: (678, 410)
 
 Red Line 15:
-Start Position 1: (2134, 384)
-Start Position 2: (2319, 384)
-End Position 1: (2134, 378)
-End Position 2: (2319, 378)
+Start Position 1: (683, 430)
+Start Position 2: (763, 430)
+End Position 1: (683, 425)
+End Position 2: (763, 425)
 
 Red Line 16:
-Start Position 1: (2327, 378)
-Start Position 2: (2513, 378)
-End Position 1: (2327, 372)
-End Position 2: (2513, 372)
+Start Position 1: (768, 440)
+Start Position 2: (805, 440)
+End Position 1: (768, 435)
+End Position 2: (805, 435)
 
 Red Line 17:
-Start Position 1: (2521, 336)
-Start Position 2: (2706, 336)
-End Position 1: (2521, 330)
-End Position 2: (2706, 330)
+Start Position 1: (811, 460)
+Start Position 2: (848, 460)
+End Position 1: (811, 455)
+End Position 2: (848, 455)
 
 Red Line 18:
-Start Position 1: (2714, 336)
-Start Position 2: (2803, 336)
-End Position 1: (2714, 330)
-End Position 2: (2803, 330)
+Start Position 1: (853, 440)
+Start Position 2: (890, 440)
+End Position 1: (853, 435)
+End Position 2: (890, 435)
 
 Red Line 19:
-Start Position 1: (2811, 336)
-Start Position 2: (2900, 336)
-End Position 1: (2811, 330)
-End Position 2: (2900, 330)
+Start Position 1: (896, 430)
+Start Position 2: (933, 430)
+End Position 1: (896, 425)
+End Position 2: (933, 425)
 
 Red Line 20:
-Start Position 1: (2908, 336)
-Start Position 2: (3094, 336)
-End Position 1: (2908, 330)
-End Position 2: (3094, 330)
+Start Position 1: (938, 415)
+Start Position 2: (975, 415)
+End Position 1: (938, 410)
+End Position 2: (975, 410)
 
 Red Line 21:
-Start Position 1: (3102, 342)
-Start Position 2: (3287, 342)
-End Position 1: (3102, 336)
-End Position 2: (3287, 336)
+Start Position 1: (981, 400)
+Start Position 2: (1018, 400)
+End Position 1: (981, 395)
+End Position 2: (1018, 395)
 
 Red Line 22:
-Start Position 1: (3295, 378)
-Start Position 2: (3481, 378)
-End Position 1: (3295, 372)
-End Position 2: (3481, 372)
+Start Position 1: (1023, 385)
+Start Position 2: (1060, 385)
+End Position 1: (1023, 380)
+End Position 2: (1060, 380)
 
 Red Line 23:
-Start Position 1: (3489, 384)
-Start Position 2: (3674, 384)
-End Position 1: (3489, 378)
-End Position 2: (3674, 378)
+Start Position 1: (1060, 370)
+Start Position 2: (1103, 370)
+End Position 1: (1060, 365)
+End Position 2: (1103, 365)
 
 Red Line 24:
-Start Position 1: (3682, 414)
-Start Position 2: (3868, 414)
-End Position 1: (3682, 408)
-End Position 2: (3868, 408)
+Start Position 1: (1103, 400)
+Start Position 2: (1145, 400)
+End Position 1: (1103, 395)
+End Position 2: (1145, 395)
 
 Red Line 25:
-Start Position 1: (3876, 342)
-Start Position 2: (4062, 342)
-End Position 1: (3876, 336)
-End Position 2: (4062, 336)
+Start Position 1: (1145, 415)
+Start Position 2: (1188, 415)
+End Position 1: (1145, 410)
+End Position 2: (1188, 410)
 
 Red Line 26:
-Start Position 1: (4070, 414)
-Start Position 2: (4255, 414)
-End Position 1: (4070, 408)
-End Position 2: (4255, 408)
+Start Position 1: (1188, 430)
+Start Position 2: (1358, 430)
+End Position 1: (1188, 425)
+End Position 2: (1358, 425)
 
 Red Line 27:
-Start Position 1: (4263, 426)
-Start Position 2: (4449, 426)
-End Position 1: (4263, 420)
-End Position 2: (4449, 420)
+Start Position 1: (1358, 460)
+Start Position 2: (1400, 460)
+End Position 1: (1358, 455)
+End Position 2: (1400, 455)
 
 Red Line 28:
-Start Position 1: (4457, 426)
-Start Position 2: (4642, 426)
-End Position 1: (4457, 420)
-End Position 2: (4642, 420)
+Start Position 1: (1400, 430)
+Start Position 2: (1485, 430)
+End Position 1: (1400, 425)
+End Position 2: (1485, 425)
+
+Red Line 29:
+Start Position 1: (1485, 415)
+Start Position 2: (1528, 415)
+End Position 1: (1485, 410)
+End Position 2: (1528, 410)
+
+Red Line 30:
+Start Position 1: (1527, 430)
+Start Position 2: (1612, 430)
+End Position 1: (1527, 425)
+End Position 2: (1612, 425)
+
+Red Line 31:
+Start Position 1: (1612, 440)
+Start Position 2: (1650, 440)
+End Position 1: (1612, 435)
+End Position 2: (1650, 435)
+
+Red Line 32:
+Start Position 1: (1655, 460)
+Start Position 2: (1692, 460)
+End Position 1: (1655, 455)
+End Position 2: (1692, 455)
+
+Red Line 33:
+Start Position 1: (1697, 440)
+Start Position 2: (1735, 440)
+End Position 1: (1697, 435)
+End Position 2: (1735, 435)
+
+Red Line 34:
+Start Position 1: (1740, 430)
+Start Position 2: (1777, 430)
+End Position 1: (1740, 425)
+End Position 2: (1777, 425)
+
+Red Line 35:
+Start Position 1: (1782, 415)
+Start Position 2: (1820, 415)
+End Position 1: (1782, 410)
+End Position 2: (1820, 410)
+
+Red Line 36:
+Start Position 1: (1825, 430)
+Start Position 2: (1862, 430)
+End Position 1: (1825, 425)
+End Position 2: (1862, 425)
+
+Red Line 37:
+Start Position 1: (1867, 440)
+Start Position 2: (1904, 440)
+End Position 1: (1867, 435)
+End Position 2: (1904, 435)
+
+Red Line 38:
+Start Position 1: (1910, 445)
+Start Position 2: (1947, 445)
+End Position 1: (1910, 440)
+End Position 2: (1947, 440)
+
+Red Line 39:
+Start Position 1: (1952, 440)
+Start Position 2: (1989, 440)
+End Position 1: (1952, 435)
+End Position 2: (1989, 435)
+
+Red Line 40:
+Start Position 1: (1995, 470)
+Start Position 2: (2032, 470)
+End Position 1: (1995, 465)
+End Position 2: (2032, 465)
+
+Red Line 41:
+Start Position 1: (2037, 460)
+Start Position 2: (2074, 460)
+End Position 1: (2037, 455)
+End Position 2: (2074, 455)
+
+Red Line 42:
+Start Position 1: (2080, 430)
+Start Position 2: (2117, 430)
+End Position 1: (2080, 425)
+End Position 2: (2117, 425)
+
+Red Line 43:
+Start Position 1: (2122, 430)
+Start Position 2: (2159, 430)
+End Position 1: (2122, 425)
+End Position 2: (2159, 425)
+
+Red Line 44:
+Start Position 1: (2165, 415)
+Start Position 2: (2202, 415)
+End Position 1: (2165, 410)
+End Position 2: (2202, 410)
+
+Red Line 45:
+Start Position 1: (2207, 430)
+Start Position 2: (2287, 430)
+End Position 1: (2207, 425)
+End Position 2: (2287, 425)
+
+Red Line 46:
+Start Position 1: (2292, 440)
+Start Position 2: (2329, 440)
+End Position 1: (2292, 435)
+End Position 2: (2329, 435)
+
+Red Line 47:
+Start Position 1: (2334, 460)
+Start Position 2: (2372, 460)
+End Position 1: (2334, 455)
+End Position 2: (2372, 455)
+
+Red Line 48:
+Start Position 1: (2377, 470)
+Start Position 2: (2414, 470)
+End Position 1: (2377, 465)
+End Position 2: (2414, 465)
+
+Red Line 49:
+Start Position 1: (2419, 490)
+Start Position 2: (2457, 490)
+End Position 1: (2419, 485)
+End Position 2: (2457, 485)
+
+Red Line 50:
+Start Position 1: (2462, 440)
+Start Position 2: (2499, 440)
+End Position 1: (2462, 435)
+End Position 2: (2499, 435)
+
+Red Line 51:
+Start Position 1: (2504, 490)
+Start Position 2: (2542, 490)
+End Position 1: (2504, 485)
+End Position 2: (2542, 485)
+
+Red Line 52:
+Start Position 1: (2547, 500)
+Start Position 2: (2627, 500)
+End Position 1: (2547, 495)
+End Position 2: (2627, 495)
+
+Red Line 53:
+Start Position 1: (2632, 500)
+Start Position 2: (2711, 500)
+End Position 1: (2632, 495)
+End Position 2: (2711, 495)
+
+Red Line 54:
+Start Position 1: (2717, 430)
+Start Position 2: (2796, 430)
+End Position 1: (2717, 425)
+End Position 2: (2796, 425)
+
+Red Line 55:
+Start Position 1: (2802, 440)
+Start Position 2: (2839, 440)
+End Position 1: (2802, 435)
+End Position 2: (2839, 435)
+
+Red Line 56:
+Start Position 1: (2844, 460)
+Start Position 2: (2881, 460)
+End Position 1: (2844, 455)
+End Position 2: (2881, 455)
+
+Red Line 57:
+Start Position 1: (2881, 440)
+Start Position 2: (2924, 440)
+End Position 1: (2881, 435)
+End Position 2: (2924, 435)
+
+Red Line 58:
+Start Position 1: (2924, 430)
+Start Position 2: (2966, 430)
+End Position 1: (2924, 425)
+End Position 2: (2966, 425)
+
+Red Line 59:
+Start Position 1: (2966, 415)
+Start Position 2: (3009, 415)
+End Position 1: (2966, 410)
+End Position 2: (3009, 410)
+
+Red Line 60:
+Start Position 1: (3009, 400)
+Start Position 2: (3051, 400)
+End Position 1: (3009, 395)
+End Position 2: (3051, 395)
+
+Red Line 61:
+Start Position 1: (3051, 385)
+Start Position 2: (3136, 385)
+End Position 1: (3051, 380)
+End Position 2: (3136, 380)
+
+Red Line 62:
+Start Position 1: (3136, 400)
+Start Position 2: (3179, 400)
+End Position 1: (3136, 395)
+End Position 2: (3179, 395)
+
+Red Line 63:
+Start Position 1: (3179, 415)
+Start Position 2: (3221, 415)
+End Position 1: (3179, 410)
+End Position 2: (3221, 410)
+
+Red Line 64:
+Start Position 1: (3221, 400)
+Start Position 2: (3264, 400)
+End Position 1: (3221, 395)
+End Position 2: (3264, 395)
+
+Red Line 65:
+Start Position 1: (3264, 385)
+Start Position 2: (3306, 385)
+End Position 1: (3264, 380)
+End Position 2: (3306, 380)
+
+Red Line 66:
+Start Position 1: (3306, 370)
+Start Position 2: (3349, 370)
+End Position 1: (3306, 365)
+End Position 2: (3349, 365)
+
+Red Line 67:
+Start Position 1: (3349, 415)
+Start Position 2: (3391, 415)
+End Position 1: (3349, 410)
+End Position 2: (3391, 410)
+
+Red Line 68:
+Start Position 1: (3391, 430)
+Start Position 2: (3471, 430)
+End Position 1: (3391, 425)
+End Position 2: (3471, 425)
+
+Red Line 69:
+Start Position 1: (3476, 440)
+Start Position 2: (3513, 440)
+End Position 1: (3476, 435)
+End Position 2: (3513, 435)
+
+Red Line 70:
+Start Position 1: (3518, 460)
+Start Position 2: (3556, 460)
+End Position 1: (3518, 455)
+End Position 2: (3556, 455)
+
+Red Line 71:
+Start Position 1: (3561, 440)
+Start Position 2: (3598, 440)
+End Position 1: (3561, 435)
+End Position 2: (3598, 435)
+
+Red Line 72:
+Start Position 1: (3603, 430)
+Start Position 2: (3641, 430)
+End Position 1: (3603, 425)
+End Position 2: (3641, 425)
+
+Red Line 73:
+Start Position 1: (3646, 415)
+Start Position 2: (3683, 415)
+End Position 1: (3646, 410)
+End Position 2: (3683, 410)
+
+Red Line 74:
+Start Position 1: (3688, 400)
+Start Position 2: (3726, 400)
+End Position 1: (3688, 395)
+End Position 2: (3726, 395)
+
+Red Line 75:
+Start Position 1: (3731, 385)
+Start Position 2: (3768, 385)
+End Position 1: (3731, 380)
+End Position 2: (3768, 380)
+
+Red Line 76:
+Start Position 1: (3773, 370)
+Start Position 2: (3810, 370)
+End Position 1: (3773, 365)
+End Position 2: (3810, 365)
+
+Red Line 77:
+Start Position 1: (3816, 400)
+Start Position 2: (3853, 400)
+End Position 1: (3816, 395)
+End Position 2: (3853, 395)
+
+Red Line 78:
+Start Position 1: (3858, 415)
+Start Position 2: (3895, 415)
+End Position 1: (3858, 410)
+End Position 2: (3895, 410)
+
+Red Line 79:
+Start Position 1: (3901, 430)
+Start Position 2: (3980, 430)
+End Position 1: (3901, 425)
+End Position 2: (3980, 425)
+
+Red Line 80:
+Start Position 1: (3986, 430)
+Start Position 2: (4065, 430)
+End Position 1: (3986, 425)
+End Position 2: (4065, 425)
+
+Red Line 81:
+Start Position 1: (4071, 385)
+Start Position 2: (4108, 385)
+End Position 1: (4071, 380)
+End Position 2: (4108, 380)
+
+Red Line 82:
+Start Position 1: (4113, 355)
+Start Position 2: (4150, 355)
+End Position 1: (4113, 350)
+End Position 2: (4150, 350)
+
+Red Line 83:
+Start Position 1: (4156, 355)
+Start Position 2: (4193, 355)
+End Position 1: (4156, 350)
+End Position 2: (4193, 350)
+
+Red Line 84:
+Start Position 1: (4198, 345)
+Start Position 2: (4235, 345)
+End Position 1: (4198, 340)
+End Position 2: (4235, 340)
+
+Red Line 85:
+Start Position 1: (4240, 355)
+Start Position 2: (4320, 355)
+End Position 1: (4240, 350)
+End Position 2: (4320, 350)
+
+Red Line 86:
+Start Position 1: (4325, 370)
+Start Position 2: (4363, 370)
+End Position 1: (4325, 365)
+End Position 2: (4363, 365)
+
+Red Line 87:
+Start Position 1: (4368, 385)
+Start Position 2: (4405, 385)
+End Position 1: (4368, 380)
+End Position 2: (4405, 380)
+
+Red Line 88:
+Start Position 1: (4410, 370)
+Start Position 2: (4448, 370)
+End Position 1: (4410, 365)
+End Position 2: (4448, 365)
+
+Red Line 89:
+Start Position 1: (4453, 355)
+Start Position 2: (4490, 355)
+End Position 1: (4453, 350)
+End Position 2: (4490, 350)
+
+Red Line 90:
+Start Position 1: (4495, 345)
+Start Position 2: (4533, 345)
+End Position 1: (4495, 340)
+End Position 2: (4533, 340)
+
+Red Line 91:
+Start Position 1: (4538, 355)
+Start Position 2: (4575, 355)
+End Position 1: (4538, 350)
+End Position 2: (4575, 350)
+
+Red Line 92:
+Start Position 1: (4580, 370)
+Start Position 2: (4617, 370)
+End Position 1: (4580, 365)
+End Position 2: (4617, 365)
+
+Red Line 93:
+Start Position 1: (4623, 375)
+Start Position 2: (4660, 375)
+End Position 1: (4623, 370)
+End Position 2: (4660, 370)
+
+Red Line 94:
+Start Position 1: (4665, 370)
+Start Position 2: (4702, 370)
+End Position 1: (4665, 365)
+End Position 2: (4702, 365)
+
+Red Line 95:
+Start Position 1: (4702, 400)
+Start Position 2: (4745, 400)
+End Position 1: (4702, 395)
+End Position 2: (4745, 395)
+
+Red Line 96:
+Start Position 1: (4745, 385)
+Start Position 2: (4787, 385)
+End Position 1: (4745, 380)
+End Position 2: (4787, 380)
+
+Red Line 97:
+Start Position 1: (4787, 355)
+Start Position 2: (4872, 355)
+End Position 1: (4787, 350)
+End Position 2: (4872, 350)
+
+Red Line 98:
+Start Position 1: (4872, 345)
+Start Position 2: (4915, 345)
+End Position 1: (4872, 340)
+End Position 2: (4915, 340)
+
+Red Line 99:
+Start Position 1: (4915, 355)
+Start Position 2: (5000, 355)
+End Position 1: (4915, 350)
+End Position 2: (5000, 350)
+
+Red Line 100:
+Start Position 1: (5000, 370)
+Start Position 2: (5042, 370)
+End Position 1: (5000, 365)
+End Position 2: (5042, 365)
+
+Red Line 101:
+Start Position 1: (5042, 385)
+Start Position 2: (5085, 385)
+End Position 1: (5042, 380)
+End Position 2: (5085, 380)
+
+Red Line 102:
+Start Position 1: (5085, 400)
+Start Position 2: (5127, 400)
+End Position 1: (5085, 395)
+End Position 2: (5127, 395)
+
+Red Line 103:
+Start Position 1: (5127, 415)
+Start Position 2: (5170, 415)
+End Position 1: (5127, 410)
+End Position 2: (5170, 410)
+
+Red Line 104:
+Start Position 1: (5170, 370)
+Start Position 2: (5212, 370)
+End Position 1: (5170, 365)
+End Position 2: (5212, 365)
+
+Red Line 105:
+Start Position 1: (5212, 415)
+Start Position 2: (5255, 415)
+End Position 1: (5212, 410)
+End Position 2: (5255, 410)
+
+Red Line 106:
+Start Position 1: (5255, 430)
+Start Position 2: (5334, 430)
+End Position 1: (5255, 425)
+End Position 2: (5334, 425)
+
+Red Line 107:
+Start Position 1: (5339, 430)
+Start Position 2: (5419, 430)
+End Position 1: (5339, 425)
+End Position 2: (5419, 425)
 

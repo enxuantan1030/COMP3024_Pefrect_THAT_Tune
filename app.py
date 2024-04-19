@@ -35,7 +35,7 @@ def main():
         st.success("Music Sheet uploaded successfully.")
 
     # File upload for audio
-    uploaded_audio = st.file_uploader("Upload your piano recording here (.mp3, .ogg, .wav, .flac)", type=["mp3", "ogg", "wav", "flac"])
+    uploaded_audio = st.file_uploader("Upload your piano recording here (.mp3, .wav, .flac)", type=["mp3", "wav", "flac"])
     if uploaded_audio is not None:
         st.success("Recording uploaded successfully.")
 
@@ -43,16 +43,6 @@ def main():
         # Determine file extensions
         image_extension = uploaded_image.name.split(".")[-1]
         audio_extension = uploaded_audio.name.split(".")[-1]
-
-        # Save the uploaded image as "input_sheet.png" or "input_sheet.jpg"
-        input_sheet_path = f"input_sheet.{image_extension}"
-        with open(input_sheet_path, "wb") as f:
-            f.write(uploaded_image.getbuffer())
-
-        # Save the uploaded audio as "input_recording.mp3" or with the original extension
-        input_recording_path = f"input_recording.{audio_extension}"
-        with open(input_recording_path, "wb") as f:
-            f.write(uploaded_audio.getbuffer())
 
         # Display uploaded image
         if st.button('Evaluate'):
@@ -81,9 +71,10 @@ def main():
                 st.info(f"Evaluating your piano performance...It might take a few minutes...")
 
                 # Execute the command and wait for it to finish
-                subprocess.run(cmd, check=True)
+                pass_count, fail_count = subprocess.run(cmd, check=True)
 
                 st.success("Evaluation finished!")
+                st.write(f"PASS: {pass_count}, FAIL: {fail_count}")  # Display Pass and Fail counts
                 # Load and display result image
                 result_path = "result.png"
                 result_image = Image.open(result_path)

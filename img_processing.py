@@ -22,12 +22,12 @@ def process_image(input_image_path, output_image_path_prefix):
         reduced_noise_image = reduce_noise(cropped_rectangle,output_image_path_prefix)
         cv2.imwrite(f"{output_image_path_prefix}_reduced_noise.jpg",reduced_noise_image)
 
-        img_sheet_cropped_stretched = crop_and_stretch(reduced_noise_image)
-        cv2.imwrite(f"{output_image_path_prefix}_cropped_and_stretched_rectangle.jpg", img_sheet_cropped_stretched)
-
         # Pixelate image
-        pixelated_image = pixelate(img_sheet_cropped_stretched, 5)
+        pixelated_image = pixelate(reduced_noise_image, 5)
         cv2.imwrite(f"{output_image_path_prefix}_pixelated.jpg", pixelated_image)
+
+        img_sheet_cropped_stretched = crop_and_stretch(pixelated_image)
+        cv2.imwrite(f"{output_image_path_prefix}_cropped_and_stretched.jpg", img_sheet_cropped_stretched)
 
         # Detect red lines
         red_lines = detect_red_lines(img_sheet_cropped_stretched)
@@ -52,7 +52,7 @@ def process_image(input_image_path, output_image_path_prefix):
                      2)  # Green color
 
         # Save the image with colored lines drawn
-        cv2.imwrite(f"{output_image_path_prefix}_noises_and_lines.jpg", img_sheet_cropped_stretched)
+        cv2.imwrite(f"{output_image_path_prefix}_detected_lines.jpg", img_sheet_cropped_stretched)
 
         return red_lines
 
@@ -80,16 +80,7 @@ def reduce_noise(image, filename, morph_kernel_size=5):
     result = cv2.bitwise_and(image, image, mask=opened_mask)
     cv2.imwrite(f"{filename}_bitwise.jpg", result)
 
-    # Split the result into its color channels
-    b, g, r = cv2.split(result)
-
-    # Apply histogram equalization to the red channel to increase the contrast of red colour
-    equ_r = cv2.equalizeHist(r)
-
-    # Merge the equalized red channel with the original green and blue channels
-    result_equalized = cv2.merge((b, g, equ_r))
-
-    return result_equalized
+    return result
 
 
 def detect_red_lines(image, min_distance=10):

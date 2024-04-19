@@ -84,7 +84,7 @@ def merge_recs(recs, threshold):
     return filtered_recs
 
 
-if __name__ == "__main__":
+def main():
     # Convert audio to midi
     # Check if audio file path argument is provided
     if len(sys.argv) > 4:
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     if img_width not in [2255, 1465]:
         staff_thresh = 0.77
     else:
-        staff_thresh = 0.6
+        staff_thresh = 0.65
 
     print("Matching staff image...")
     staff_recs = locate_images(img_gray, staff_imgs, staff_lower, staff_upper, staff_thresh)
@@ -341,8 +341,8 @@ if __name__ == "__main__":
     # Process second image
     red_line_b = process_image(f"{audio_name}_img.png", f"cropped_{audio_name}_audio_img")
 
-######################################################################################################
-    passed_notes = compare_midi_images(red_line_a, red_line_b, mode)
+######################################compare-midi################################
+    passed_notes, pass_count, fail_count = compare_midi_images(red_line_a, red_line_b, mode)
 
     # Draw rectangle on the failed notes
     result = draw_rectangle_on_failed_notes(whole_recs_img, note_groups,passed_notes)
@@ -350,7 +350,7 @@ if __name__ == "__main__":
     # Save the image with drawn rectangle
     cv2.imwrite('result.png', result)
 
-    generate_overlay_image(f"cropped_{audio_name}_audio_img_bitwise.jpg",f"cropped_{img_file_name}_sheet_img_bitwise.jpg")
+    generate_overlay_image(f"cropped_{audio_name}_audio_img_cropped_and_stretched.jpg",f"cropped_{img_file_name}_sheet_img_cropped_and_stretched.jpg")
 
     # Delete all files in the output_audio directory
     output_audio_dir = "output_audio"
@@ -362,5 +362,8 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"Error deleting {file_path}: {e}")
 
-######################################compare-midi################################
+    return pass_count, fail_count
 
+
+if __name__ == "__main__":
+    main()

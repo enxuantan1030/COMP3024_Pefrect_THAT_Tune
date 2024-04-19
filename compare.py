@@ -66,7 +66,7 @@ def compare_midi_images(imageA_lines, imageB_lines, mode):
             file_b.write(f"End Position 2: {y2_b}\n")
             file_b.write("\n")
 
-    return pass_indices  # Return the list of fail indices
+    return pass_indices, pass_count, fail_count  # Return the list of fail indices
 
 
 def draw_rectangle_on_failed_notes(img, note_groups, passed_notes):
