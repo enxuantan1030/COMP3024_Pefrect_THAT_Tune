@@ -342,7 +342,7 @@ if __name__ == "__main__":
     red_line_b = process_image(f"{audio_name}_img.png", f"cropped_{audio_name}_audio_img")
 
 ######################################################################################################
-    passed_notes, pass_count, fail_count = compare_midi_images(red_line_a, red_line_b, mode)
+    passed_notes= compare_midi_images(red_line_a, red_line_b, mode)
 
     # Draw rectangle on the failed notes
     result = draw_rectangle_on_failed_notes(whole_recs_img, note_groups,passed_notes)
