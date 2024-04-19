@@ -1,5 +1,7 @@
 opencv-python-headless==4.5.1.48
-matplotlib
-mido
-midiutil
-basic-pitch
+matplotlib==3.8.3
+mido==1.3.2
+midiutil==1.2.1
+basic-pitch=0.3.0
+numpy==1.26.4
+streamlit==1.32.2
