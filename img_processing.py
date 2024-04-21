@@ -7,7 +7,7 @@ def process_image(input_image_path, output_image_path_prefix):
     img_sheet = cv2.imread(input_image_path)
 
     # Find black rectangles in the image
-    black_rectangles = find_black_rectangles(img_sheet)
+    black_rectangles = find_black_rectangles(img_sheet, input_image_path)
 
     # Crop black rectangle
     cropped_rectangle = crop_black_rectangle(img_sheet, black_rectangles)
@@ -167,25 +167,25 @@ def pixelate(image, pixel_size):
     return pixelated
 
 
-def find_black_rectangles(img):
+def find_black_rectangles(img, input_image_path):
     # Convert the image to grayscale
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     # Apply adaptive thresholding to obtain a binary image
     binary_img = cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 11, 2)
-    cv2.imwrite(f"binary.jpg", binary_img)
+    cv2.imwrite(f"{input_image_path}_binary.jpg", binary_img)
 
     # Find contours in the binary image
     contours, _ = cv2.findContours(binary_img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    # Filter contours based on area (adjust the threshold as needed)
+    # Filter contours based on area
     min_contour_area = 100
     black_rectangles = [contour for contour in contours if cv2.contourArea(contour) > min_contour_area]
 
     # Draw contours on the original image
     img_with_contours = img.copy()
     cv2.drawContours(img_with_contours, black_rectangles, -1, (0, 255, 0), 2)  # Green color, thickness 2
-    cv2.imwrite(f"contour.jpg", img_with_contours)
+    cv2.imwrite(f"{input_image_path}_contour.jpg", img_with_contours)
 
     return black_rectangles
 
@@ -200,24 +200,22 @@ def crop_black_rectangle(img, rectangles):
 
 
 def crop_and_stretch(img):
-    # Find black rectangles in the image
-    black_rectangles = find_black_rectangles(img)
+    # Find the first and last non-black columns
+    non_black_cols = np.where(np.any(img != 0, axis=0))[0]
+    if non_black_cols.size:
+        start_col = non_black_cols[0]
+        end_col = non_black_cols[-1]
+    else:
+        # If no non-black columns found, return the original image
+        return img
 
-    # Get the bounding box of all black rectangles
-    if black_rectangles:
-        all_points = np.vstack(black_rectangles)
-        x, y, w, h = cv2.boundingRect(all_points)
+    # Crop the image based on the bounding box of non-black regions along the width
+    cropped_img = img[:, start_col:end_col + 1]
 
-        # Crop from the leftmost coordinate
-        img_cropped_left = img[:, x:]
+    # Calculate the original width
+    original_width = img.shape[1]
 
-        # Crop from the rightmost coordinate
-        img_cropped_right = img_cropped_left[:, :x + w]
+    # Stretch the cropped image horizontally to match the original width
+    stretched_img = cv2.resize(cropped_img, (original_width, cropped_img.shape[0]))
 
-        # Stretch the images horizontally to match the original size
-        img_stretched = cv2.resize(img_cropped_right, (img.shape[1], img.shape[0]))
-
-        return img_stretched
-
-    # Return the original image if no black rectangles found
-    return img
+    return stretched_img

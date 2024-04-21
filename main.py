@@ -321,8 +321,6 @@ if __name__ == "__main__":
 ##################################midi-to-img#############################################
 ################################################################################################
 
-
-    # Assuming you have an instance of the MidiFile class
     midi_sheet = MidiFile(f"{output_sheet_directory}/{img_file_name}_output_sheet.mid")
 
     # Call the draw_roll_and_save method with a filename (optional)
@@ -336,10 +334,10 @@ if __name__ == "__main__":
 
 #####################################image processing##############################
     # Process first image
-    red_line_a = process_image(f"{img_file_name}_img.png", f"cropped_{img_file_name}_sheet_img")
+    red_line_a = process_image(f"input_sheet_img.png", f"cropped_{img_file_name}_sheet_img")
 
     # Process second image
-    red_line_b = process_image(f"{audio_name}_img.png", f"cropped_{audio_name}_audio_img")
+    red_line_b = process_image(f"input_recording_img.png", f"cropped_{audio_name}_audio_img")
 
 ######################################################################################################
     passed_notes= compare_midi_images(red_line_a, red_line_b, mode)
