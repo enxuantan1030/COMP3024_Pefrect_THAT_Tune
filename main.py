@@ -91,7 +91,7 @@ if __name__ == "__main__":
         audio_file_path = sys.argv[4]
         audio_name = os.path.splitext(os.path.basename(audio_file_path))[0]
         # Run basic-pitch library for audio
-        audio_output_directory = f"output_audio"
+        audio_output_directory = f"./output_audio"
         # Get the path to the Python binary in the virtual environment
         python_binary = sys.executable
         # Define the command and its arguments
