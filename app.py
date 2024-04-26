@@ -1,8 +1,5 @@
 import streamlit as st
-import os
-import subprocess
 from PIL import Image
-import time
 from main import *
 
 def main():

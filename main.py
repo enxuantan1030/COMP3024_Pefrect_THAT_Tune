@@ -319,7 +319,6 @@ if __name__ == "__main__":
 
 
 ##################################midi-to-img#############################################
-################################################################################################
 
     midi_sheet = MidiFile(f"{output_sheet_directory}/{img_file_name}_output_sheet.mid")
 
@@ -339,7 +338,7 @@ if __name__ == "__main__":
     # Process second image
     red_line_b = process_image(f"input_recording_img.png", f"cropped_{audio_name}_audio_img")
 
-######################################################################################################
+#########################################idetify incorrect notes#############################################################
     passed_notes= compare_midi_images(red_line_a, red_line_b, mode)
 
     # Draw rectangle on the failed notes
