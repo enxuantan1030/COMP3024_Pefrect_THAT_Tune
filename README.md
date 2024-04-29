@@ -21,7 +21,9 @@ The objective of the project are listed below:
 # Installation Steps
 1. Install any Python IDE.**HIGHLY RECOMMENDED PyCharm**</br>
 2. Download repository as ZIP file from the link- https://github.com/enxuantan1030/COMP3024_Perfect_THAT_Tune.git </br>
-3. Build file
+3. Open terminal from IDE. </br>
+3. Install necessary libraries by running the command in the terminal  ``` pip install -r requirement.txt``` </br>
+4. If the library installation is taking a long time, close the terminal and manually install the libraries inside the requirement.txt. </br>
 4. Run the program with the command in the terminal: ``` streamlit run app.py```
 
 # How to use the website?
@@ -73,20 +75,12 @@ The objective of the project are listed below:
 - red_lines_image_b.txt
 - result.png
 
-# Maintenance Performed
-- Extract methods from GameScene,StartGame,EndGame into several classes named with their features
-- Create Interface for GeneralComponents which stores methods' without name body
-- Create several packages with a consistent pattern</br>E.g EndGame package contains Features package, EndGame
-- Delete method sumCellNumbersToScore in GameScene as the score is added in method moveHorizontally and moveVertically(currently in GameMovement.java)
-- Delete argument int turn in randomFillNumber(currently in GameMovement.java) as it is not used.
-- More detailed information can be found in Github commits, javadoc
-
 
 # Main libraries used
 - OpenCV
 - Matlibplot
-- Numpy
 - Streamlit
+- details of libraries used can be found in requirements.txt.
 
 # Future Works
 1. Handle polyphonic sheets
